@@ -1,0 +1,24 @@
+name: Data Pipeline CI  # The name of your automation pipeline
+
+on:
+  push:
+    branches: [ main ]  # 🚀 TRIGGER STAGxE: Run every time you push to 'main'
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest  # Tell GitHub to spin up a clean Ubuntu server in the cloud
+
+    steps:
+    # 1. Pull your code from the GitHub repository onto that cloud server
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    # 2. Build the Docker image in the cloud (Just like your 'docker build' command)
+    - name: Build Docker Image
+      run: docker build -t cloud-pipeline .
+
+    # 3. Run the tests inside the container (Just like your 'docker run' command)
+    - name: Run Tests inside Container
+      run: docker run --rm cloud-pipeline

@@ -1,0 +1,4 @@
+sample_id,patient_uuid,device_sn,analyte_code,value,unit,timestamp_utc,qc_pass
+SAM-88391,8f3c-92a1-4bcf,ROCHE-04,GLU,105,mg/dL,2026-05-14T13:00:00Z,TRUE
+SAM-88392,2a1b-73df-90ee,ROCHE-04,CHO,198,mg/dL,2026-05-14T13:02:15Z,TRUE
+SAM-88393,991e-04ba-1122,SYSME-02,WBC,11.5,10^3/uL,2026-05-14T13:05:40Z,FALSE
