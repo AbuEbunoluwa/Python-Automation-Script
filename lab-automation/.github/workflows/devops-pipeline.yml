@@ -1,0 +1,26 @@
+name: Data Pipeline CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    # 🎯 THIS IS THE FIX: Tell GitHub to run all commands inside your subfolder
+    defaults:
+      run:
+        working-directory: ./lab-automation
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Build Docker Image
+      run: docker build -t cloud-pipeline .
+
+    - name: Run Tests inside Container
+      run: docker run --rm cloud-pipeline
